@@ -1,0 +1,46 @@
+version: "2.1"
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: 'testassignment_nginx'
+    hostname: 'testassignment_nginx'
+    ports:
+      - "8000:80"
+    volumes:
+      - ./back:/app
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx/log:/var/log/nginx
+    networks:
+      - testassignment_net
+    depends_on:
+      - php_fpm
+
+  php_fpm:
+    build: "./docker/php_fpm"
+    container_name: 'testassignment_php_fpm'
+    hostname: 'testassignment_php_fpm'
+    volumes:
+      - ./back:/app
+      - ./docker/data:/database
+    networks:
+      - testassignment_net
+    working_dir: /app
+    env_file:
+      - "./back/.env"
+
+  swagger:
+    image: swaggerapi/swagger-ui
+    expose:
+      - 8080
+    ports:
+      - "8001:8080"
+    environment:
+      SWAGGER_JSON: /swagger/swagger.json
+    volumes:
+      - ./swagger:/swagger
+
+networks:
+  testassignment_net:
+    driver: bridge
+

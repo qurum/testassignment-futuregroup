@@ -1,0 +1,10 @@
+actor: ApiTester
+suite_namespace: Tests\Api
+modules:
+    # enable helpers as array
+    enabled:
+        - Tests\Support\Helper\FixtureHelper
+        - REST:
+            url: http://testassignment_nginx_test
+            depends: PhpBrowser
+            part: Json

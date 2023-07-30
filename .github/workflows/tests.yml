@@ -1,0 +1,40 @@
+on: push
+name: CI
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      COMPOSE_FILE: docker-compose.test.yml
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Prepare Application
+        run: |
+          cp ./back/.env.example ./back/.env
+          cp ./back/.test.env.example ./back/tests/.env
+
+      - name: Build docker images
+        run: docker-compose build
+
+      - name: Install composer dependencies
+        run:  composer install --no-scripts
+        working-directory: ./back
+
+      - name: docker compose up
+        run: docker-compose up -d
+
+      - name: migrate
+        run: docker exec testassignment_php_fpm_test php /app/vendor/bin/phinx migrate -e development
+
+      - name: Unit tests
+        run: docker exec testassignment_php_fpm_test php /app/vendor/bin/codecept run --steps Unit
+
+      - name: Api tests
+        run: |
+          docker exec testassignment_php_fpm_test chown -R www-data:www-data /database 
+          docker exec testassignment_php_fpm_test php /app/vendor/bin/codecept run --steps Api
+
+      - name: docker compose down
+        run: docker-compose down

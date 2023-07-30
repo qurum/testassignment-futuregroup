@@ -1,0 +1,961 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Notebooks",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000/api/v1",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/notebooks": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Create notebook",
+        "operationId": "Createnotebook",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/CreatenotebookRequest"
+                  },
+                  {
+                    "example": {
+                      "fullname": "John Doe",
+                      "company": "Noname, inc",
+                      "email": "example@example.com",
+                      "phone": "+79160010203",
+                      "birthdate": "1970-01-02T12:01:02+00:00",
+                      "photo": null
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "fullname": "John Doe",
+                "company": "Noname, inc",
+                "email": "example@example.com",
+                "phone": "+79160010203",
+                "birthdate": "1970-01-02T12:01:02+00:00",
+                "photo": null
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Server": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nginx/1.23.3"
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Fri, 28 Jul 2023 22:47:40 GMT"
+                  }
+                }
+              },
+              "Transfer-Encoding": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "chunked"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "PHP/8.2.8"
+                  }
+                }
+              },
+              "Location": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "/api/v1/notebooks/1"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Createnotebook"
+                    },
+                    {
+                      "example": {
+                        "fullname": "John Doe",
+                        "company": "Noname, inc",
+                        "phone": "+79160010203",
+                        "email": "example@example.com",
+                        "birthdate": "1970-01-02T12:01:02+00:00",
+                        "photo": null
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "fullname": "John Doe",
+                  "company": "Noname, inc",
+                  "phone": "+79160010203",
+                  "email": "example@example.com",
+                  "birthdate": "1970-01-02T12:01:02+00:00",
+                  "photo": null
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Get all notebooks",
+        "operationId": "Getallnotebooks",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "номер страницы",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "число записей на странице",
+            "required": true,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 15
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nginx/1.23.3"
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Sun, 30 Jul 2023 00:27:25 GMT"
+                  }
+                }
+              },
+              "Transfer-Encoding": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "chunked"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "PHP/8.2.8"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "http://localhost:8001"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Getallnotebooks"
+                    },
+                    {
+                      "example": {
+                        "meta": {
+                          "last_page": 1,
+                          "current_page": 1,
+                          "count": 1,
+                          "total": 1
+                        },
+                        "data": [
+                          {
+                            "fullname": "John Doe",
+                            "company": "Noname, inc",
+                            "phone": "+79160010203",
+                            "email": "example@example.com",
+                            "birthdate": "1970-01-02T12:01:02+00:00",
+                            "photo": null
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "meta": {
+                    "last_page": 1,
+                    "current_page": 1,
+                    "count": 1,
+                    "total": 1
+                  },
+                  "data": [
+                    {
+                      "fullname": "John Doe",
+                      "company": "Noname, inc",
+                      "phone": "+79160010203",
+                      "email": "example@example.com",
+                      "birthdate": "1970-01-02T12:01:02+00:00",
+                      "photo": null
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/notebooks/{id}": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Get notebook",
+        "operationId": "Getnotebook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "null"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nginx/1.23.3"
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Fri, 28 Jul 2023 22:47:58 GMT"
+                  }
+                }
+              },
+              "Transfer-Encoding": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "chunked"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "PHP/8.2.8"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Getnotebook"
+                    },
+                    {
+                      "example": {
+                        "fullname": "John Doe",
+                        "company": "Noname, inc",
+                        "phone": "+79160010203",
+                        "email": "example@example.com",
+                        "birthdate": "1970-01-02T12:01:02+00:00",
+                        "photo": null
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "fullname": "John Doe",
+                  "company": "Noname, inc",
+                  "phone": "+79160010203",
+                  "email": "example@example.com",
+                  "birthdate": "1970-01-02T12:01:02+00:00",
+                  "photo": null
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Replace notebook",
+        "operationId": "Replacenotebook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "null"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/ReplacenotebookRequest"
+                  },
+                  {
+                    "example": {
+                      "fullname": "New Name",
+                      "company": "ООО Вектор",
+                      "email": "example@example.com",
+                      "phone": "+79160010203",
+                      "birthdate": null,
+                      "photo": null
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "fullname": "New Name",
+                "company": "ООО Вектор",
+                "email": "example@example.com",
+                "phone": "+79160010203",
+                "birthdate": null,
+                "photo": null
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Server": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nginx/1.23.3"
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Fri, 28 Jul 2023 22:48:08 GMT"
+                  }
+                }
+              },
+              "Transfer-Encoding": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "chunked"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "PHP/8.2.8"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Replacenotebook"
+                    },
+                    {
+                      "example": {
+                        "fullname": "New Name",
+                        "company": "ООО Вектор",
+                        "phone": "+79160010203",
+                        "email": "example@example.com",
+                        "birthdate": null,
+                        "photo": null
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "fullname": "New Name",
+                  "company": "ООО Вектор",
+                  "phone": "+79160010203",
+                  "email": "example@example.com",
+                  "birthdate": null,
+                  "photo": null
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Delete notebook",
+        "operationId": "Deletenotebook",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "example": "null"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "headers": {
+              "Server": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "nginx/1.23.3"
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Fri, 28 Jul 2023 22:48:23 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "PHP/8.2.8"
+                  }
+                }
+              }
+            },
+            "content": {}
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreatenotebookRequest": {
+        "title": "CreatenotebookRequest",
+        "required": [
+          "fullname",
+          "company",
+          "email",
+          "phone",
+          "birthdate",
+          "photo"
+        ],
+        "type": "object",
+        "properties": {
+          "fullname": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "birthdate": {
+            "type": "string"
+          },
+          "photo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "example": {
+          "fullname": "John Doe",
+          "company": "Noname, inc",
+          "email": "example@example.com",
+          "phone": "+79160010203",
+          "birthdate": "1970-01-02T12:01:02+00:00",
+          "photo": null
+        }
+      },
+      "Createnotebook": {
+        "title": "Createnotebook",
+        "required": [
+          "fullname",
+          "company",
+          "phone",
+          "email",
+          "birthdate",
+          "photo"
+        ],
+        "type": "object",
+        "properties": {
+          "fullname": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "birthdate": {
+            "type": "string"
+          },
+          "photo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "example": {
+          "fullname": "John Doe",
+          "company": "Noname, inc",
+          "phone": "+79160010203",
+          "email": "example@example.com",
+          "birthdate": "1970-01-02T12:01:02+00:00",
+          "photo": null
+        }
+      },
+      "Getallnotebooks": {
+        "title": "Getallnotebooks",
+        "required": [
+          "meta",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "meta": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Meta"
+              },
+              {}
+            ]
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Datum"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "meta": {
+            "last_page": 1,
+            "current_page": 1,
+            "count": 1,
+            "total": 1
+          },
+          "data": [
+            {
+              "fullname": "John Doe",
+              "company": "Noname, inc",
+              "phone": "+79160010203",
+              "email": "example@example.com",
+              "birthdate": "1970-01-02T12:01:02+00:00",
+              "photo": null
+            }
+          ]
+        }
+      },
+      "Meta": {
+        "title": "Meta",
+        "required": [
+          "last_page",
+          "current_page",
+          "count",
+          "total"
+        ],
+        "type": "object",
+        "properties": {
+          "last_page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "current_page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "last_page": 1,
+          "current_page": 1,
+          "count": 1,
+          "total": 1
+        }
+      },
+      "Datum": {
+        "title": "Datum",
+        "required": [
+          "fullname",
+          "company",
+          "phone",
+          "email",
+          "birthdate",
+          "photo"
+        ],
+        "type": "object",
+        "properties": {
+          "fullname": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "birthdate": {
+            "type": "string"
+          },
+          "photo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "example": {
+          "fullname": "John Doe",
+          "company": "Noname, inc",
+          "phone": "+79160010203",
+          "email": "example@example.com",
+          "birthdate": "1970-01-02T12:01:02+00:00",
+          "photo": null
+        }
+      },
+      "Getnotebook": {
+        "title": "Getnotebook",
+        "required": [
+          "fullname",
+          "company",
+          "phone",
+          "email",
+          "birthdate",
+          "photo"
+        ],
+        "type": "object",
+        "properties": {
+          "fullname": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "birthdate": {
+            "type": "string"
+          },
+          "photo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "example": {
+          "fullname": "John Doe",
+          "company": "Noname, inc",
+          "phone": "+79160010203",
+          "email": "example@example.com",
+          "birthdate": "1970-01-02T12:01:02+00:00",
+          "photo": null
+        }
+      },
+      "ReplacenotebookRequest": {
+        "title": "ReplacenotebookRequest",
+        "required": [
+          "fullname",
+          "company",
+          "email",
+          "phone",
+          "birthdate",
+          "photo"
+        ],
+        "type": "object",
+        "properties": {
+          "fullname": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "birthdate": {
+            "type": "string",
+            "nullable": true
+          },
+          "photo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "example": {
+          "fullname": "New Name",
+          "company": "ООО Вектор",
+          "email": "example@example.com",
+          "phone": "+79160010203",
+          "birthdate": null,
+          "photo": null
+        }
+      },
+      "Replacenotebook": {
+        "title": "Replacenotebook",
+        "required": [
+          "fullname",
+          "company",
+          "phone",
+          "email",
+          "birthdate",
+          "photo"
+        ],
+        "type": "object",
+        "properties": {
+          "fullname": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "birthdate": {
+            "type": "string",
+            "nullable": true
+          },
+          "photo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "example": {
+          "fullname": "New Name",
+          "company": "ООО Вектор",
+          "phone": "+79160010203",
+          "email": "example@example.com",
+          "birthdate": null,
+          "photo": null
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}

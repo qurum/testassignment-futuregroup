@@ -1,0 +1,33 @@
+version: "2.1"
+
+services:
+  nginx_test:
+    image: nginx:latest
+    container_name: "testassignment_nginx_test"
+    hostname: "testassignment_nginx_test"
+    volumes:
+      - ./back:/app
+      - ./docker/nginx/test.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - testassignment_test_net
+    depends_on:
+      - php_fpm_test
+
+  php_fpm_test:
+    build: "./docker/php_fpm"
+    container_name: 'testassignment_php_fpm_test'
+    hostname: 'testassignment_php_fpm_test'
+    volumes:
+      - ./back:/app
+      - ./docker/data/tests:/database
+    networks:
+      - testassignment_test_net
+    working_dir: /app
+    env_file:
+      - "./back/tests/.env"
+    environment:
+      - MODE=test
+networks:
+  testassignment_test_net:
+    driver: bridge
+

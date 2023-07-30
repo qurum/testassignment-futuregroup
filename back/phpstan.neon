@@ -1,0 +1,6 @@
+parameters:
+	level: 9
+	paths:
+		- Notebook
+		- APIv1
+		- main.php

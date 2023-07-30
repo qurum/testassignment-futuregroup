@@ -1,0 +1,34 @@
+{
+    "name": "testassignment/testassignment",
+    "description": "testassignment",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ronia",
+            "email": "roni.rebane@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Notebook\\" : "Notebook",
+            "APIv1\\" : "APIv1"
+        }
+    },
+    "require": {
+        "robmorgan/phinx": "^0.13.4",
+        "ext-sqlite3": "*",
+        "slim/slim": "4.x-dev",
+        "php-di/php-di": "dev-master",
+        "respect/validation": "dev-master",
+        "giggsey/libphonenumber-for-php": "8.x-dev",
+        "slim/psr7": "dev-master",
+        "codeception/module-rest": "dev-master",
+        "vlucas/phpdotenv": "5.5.x-dev"
+    },
+    "require-dev": {
+        "codeception/codeception": "5.0.x-dev",
+        "codeception/module-phpbrowser": "*",
+        "codeception/module-asserts": "*"
+    }
+}

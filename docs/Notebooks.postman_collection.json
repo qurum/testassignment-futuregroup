@@ -1,0 +1,447 @@
+{
+	"info": {
+		"_postman_id": "519a5176-4af1-4a3b-9c4b-d3c3698c918d",
+		"name": "Notebooks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24549305"
+	},
+	"item": [
+		{
+			"name": "Create notebook",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fullname\": \"John Doe\",\n\t\"company\": \"Noname, inc\",\n\t\"email\": \"example@example.com\",\n\t\"phone\": \"+79160010203\",\n\t\"birthdate\": \"1970-01-02T12:01:02+00:00\",\n\t\"photo\": null\n}"
+				},
+				"url": {
+					"raw": "{{ _.BASE_API_URL }}/notebooks",
+					"host": [
+						"{{ _.BASE_API_URL }}"
+					],
+					"path": [
+						"notebooks"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create notebook",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fullname\": \"John Doe\",\n\t\"company\": \"Noname, inc\",\n\t\"email\": \"example@example.com\",\n\t\"phone\": \"+79160010203\",\n\t\"birthdate\": \"1970-01-02T12:01:02+00:00\",\n\t\"photo\": null\n}"
+						},
+						"url": {
+							"raw": "{{ _.BASE_API_URL }}/notebooks",
+							"host": [
+								"{{ _.BASE_API_URL }}"
+							],
+							"path": [
+								"notebooks"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.3"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 28 Jul 2023 22:47:40 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.8"
+						},
+						{
+							"key": "Location",
+							"value": "/api/v1/notebooks/1"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"fullname\": \"John Doe\",\n    \"company\": \"Noname, inc\",\n    \"phone\": \"+79160010203\",\n    \"email\": \"example@example.com\",\n    \"birthdate\": \"1970-01-02T12:01:02+00:00\",\n    \"photo\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all notebooks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ _.BASE_API_URL }}/notebooks?page=1&per_page=15",
+					"host": [
+						"{{ _.BASE_API_URL }}"
+					],
+					"path": [
+						"notebooks"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"description": "номер страницы"
+						},
+						{
+							"key": "per_page",
+							"value": "15",
+							"description": "число записей на странице"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all notebooks",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ _.BASE_API_URL }}/notebooks?page=1&per_page=15",
+							"host": [
+								"{{ _.BASE_API_URL }}"
+							],
+							"path": [
+								"notebooks"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "номер страницы"
+								},
+								{
+									"key": "per_page",
+									"value": "15",
+									"description": "число записей на странице"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.3"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 30 Jul 2023 00:27:25 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.8"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:8001"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"meta\": {\n        \"last_page\": 1,\n        \"current_page\": 1,\n        \"count\": 1,\n        \"total\": 1\n    },\n    \"data\": [\n        {\n            \"fullname\": \"John Doe\",\n            \"company\": \"Noname, inc\",\n            \"phone\": \"+79160010203\",\n            \"email\": \"example@example.com\",\n            \"birthdate\": \"1970-01-02T12:01:02+00:00\",\n            \"photo\": null\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get notebook",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{ _.BASE_API_URL }}/notebooks/:id",
+					"host": [
+						"{{ _.BASE_API_URL }}"
+					],
+					"path": [
+						"notebooks",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get notebook",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ _.BASE_API_URL }}/notebooks/:id",
+							"host": [
+								"{{ _.BASE_API_URL }}"
+							],
+							"path": [
+								"notebooks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.3"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 28 Jul 2023 22:47:58 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"fullname\": \"John Doe\",\n    \"company\": \"Noname, inc\",\n    \"phone\": \"+79160010203\",\n    \"email\": \"example@example.com\",\n    \"birthdate\": \"1970-01-02T12:01:02+00:00\",\n    \"photo\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Replace notebook",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fullname\": \"New Name\",\n\t\"company\": \"ООО Вектор\",\n\t\"email\": \"example@example.com\",\n\t\"phone\": \"+79160010203\",\n\t\"birthdate\": null,\n\t\"photo\": null\n}"
+				},
+				"url": {
+					"raw": "{{ _.BASE_API_URL }}/notebooks/:id",
+					"host": [
+						"{{ _.BASE_API_URL }}"
+					],
+					"path": [
+						"notebooks",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Replace notebook",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fullname\": \"New Name\",\n\t\"company\": \"ООО Вектор\",\n\t\"email\": \"example@example.com\",\n\t\"phone\": \"+79160010203\",\n\t\"birthdate\": null,\n\t\"photo\": null\n}"
+						},
+						"url": {
+							"raw": "{{ _.BASE_API_URL }}/notebooks/:id",
+							"host": [
+								"{{ _.BASE_API_URL }}"
+							],
+							"path": [
+								"notebooks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.3"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 28 Jul 2023 22:48:08 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"fullname\": \"New Name\",\n    \"company\": \"ООО Вектор\",\n    \"phone\": \"+79160010203\",\n    \"email\": \"example@example.com\",\n    \"birthdate\": null,\n    \"photo\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete notebook",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{ _.BASE_API_URL }}/notebooks/:id",
+					"host": [
+						"{{ _.BASE_API_URL }}"
+					],
+					"path": [
+						"notebooks",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete notebook",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{ _.BASE_API_URL }}/notebooks/:id",
+							"host": [
+								"{{ _.BASE_API_URL }}"
+							],
+							"path": [
+								"notebooks",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.23.3"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 28 Jul 2023 22:48:23 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.2.8"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": " _.BASE_API_URL ",
+			"value": "http://localhost:8000/api/v1"
+		}
+	]
+}
